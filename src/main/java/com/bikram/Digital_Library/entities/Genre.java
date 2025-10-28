@@ -1,0 +1,18 @@
+package com.bikram.Digital_Library.entities;
+
+public enum Genre {
+	COMPUTERS,
+	DRAMA,
+	THRILLER,
+	COMEDY,
+	FICTION,
+	HISTORICAL,
+	HORROR,
+	INSPIRATION,
+	FANTACY,
+	BUSINESS,
+	EDUCATION,
+	TECHNOLOGY,
+	SCIENCE,
+	LITERATURE
+}
