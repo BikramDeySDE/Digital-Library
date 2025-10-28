@@ -75,5 +75,11 @@ public class BookController {
 		return new ResponseEntity<Page<Book>>(pageOfBooks, HttpStatus.OK);
 	}
 	
+	@GetMapping("/pageNo/{pageNo}/pageSize/{pageSize}/sort")
+	public ResponseEntity<Page<Book>> getAllBooksWithPaginationAndSorting(@PathVariable("pageNo") int pageNo, @PathVariable("pageSize") int pageSize, @RequestParam("sortBy") String sort){
+		Page<Book> pageOfBooks = bookService.getAllBooksWithPaginationAndSortingFeature(pageNo, pageSize, sort);
+		return new ResponseEntity<Page<Book>>(pageOfBooks, HttpStatus.OK);
+	}
+	
 	
 }

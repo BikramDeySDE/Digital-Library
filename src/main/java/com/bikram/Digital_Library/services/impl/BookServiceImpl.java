@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.bikram.Digital_Library.dtos.BookDto;
@@ -80,9 +81,17 @@ public class BookServiceImpl implements BookService {
 		return bookRepository.findByBookName(bookName);
 	}
 
+	// pagination
 	@Override
 	public Page<Book> getAllBooksWithPaginationFeature(int pageNo, int pageSize) {
 		Pageable pageable = PageRequest.of(pageNo, pageSize);
+		return bookRepository.findAll(pageable);
+	}
+
+	// pagination and sorting
+	@Override
+	public Page<Book> getAllBooksWithPaginationAndSortingFeature(int pageNo, int pageSize, String sort) {
+		Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sort));
 		return bookRepository.findAll(pageable);
 	}
 

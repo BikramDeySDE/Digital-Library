@@ -24,4 +24,6 @@ public interface BookService {
 
 	Page<Book> getAllBooksWithPaginationFeature(int pageNo, int pageSize);
 
+	Page<Book> getAllBooksWithPaginationAndSortingFeature(int pageNo, int pageSize, String sort);
+
 }
