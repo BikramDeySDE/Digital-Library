@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.bikram.Digital_Library.dtos.BookDto;
@@ -75,6 +78,12 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<Book> getBooksByBookName(String bookName) {
 		return bookRepository.findByBookName(bookName);
+	}
+
+	@Override
+	public Page<Book> getAllBooksWithPaginationFeature(int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo, pageSize);
+		return bookRepository.findAll(pageable);
 	}
 
 }

@@ -3,6 +3,7 @@ package com.bikram.Digital_Library.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,6 +67,12 @@ public class BookController {
 	public ResponseEntity<List<Book>> getAllBooksByBookName(@RequestParam("bookName") String bookName){
 		List<Book> book = bookService.getBooksByBookName(bookName);
 		return new ResponseEntity<List<Book>>(book, HttpStatus.OK);
+	}
+	
+	@GetMapping("/pageNo/{pageNo}/pageSize/{pageSize}")
+	public ResponseEntity<Page<Book>> getALlBooksWithPaginationFeature(@PathVariable("pageNo") int pageNo, @PathVariable("pageSize") int pageSize){
+		Page<Book> pageOfBooks = bookService.getAllBooksWithPaginationFeature(pageNo, pageSize);
+		return new ResponseEntity<Page<Book>>(pageOfBooks, HttpStatus.OK);
 	}
 	
 	
