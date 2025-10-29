@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bikram.Digital_Library.dtos.BorrowDto;
 import com.bikram.Digital_Library.entities.Book;
 import com.bikram.Digital_Library.entities.Transaction;
 import com.bikram.Digital_Library.entities.TransactionType;
@@ -30,7 +31,10 @@ public class TransactionServiceImpl implements TransactionService {
 	
 	// borrow a book
 	@Override
-	public Book borrowBook(int userId, int bookId) {
+	public Book borrowBook(BorrowDto borrowDto) {
+		
+		int userId = borrowDto.getUserId();
+		int bookId = borrowDto.getBookId();
 		
 		User user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User Not Found with user-id : " + userId));
 		Book book = bookRepository.findById(bookId).orElseThrow(()-> new ResourceNotFoundException("Book Not Found with book-id : " + bookId));
