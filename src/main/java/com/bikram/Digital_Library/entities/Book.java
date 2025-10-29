@@ -26,7 +26,7 @@ public class Book {
 	private String bookName;
 	private String title;
 	@Positive(message = "cost must be greater than zero !!")
-	private String cost;
+	private float cost;
 	@PastOrPresent(message = "Publish Date must be of past or present !!")
 	@JsonFormat(pattern = "dd-MM-yyyy") // ex : 10-01-2025
 	private LocalDate publishDate;
